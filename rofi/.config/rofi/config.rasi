@@ -1,0 +1,115 @@
+/* Colors generated dynamically by wallust from the wallpaper. */
+@import "/home/samuel/.config/rofi/colors.rasi"
+
+configuration {
+    modi:                "drun,run,window";
+    show-icons:          true;
+    icon-theme:          "Papirus-Dark";
+    drun-display-format: "{name}";
+    display-drun:        "󰀻 Apps";
+    display-run:         " Run";
+    display-window:      "󰖯 Windows";
+}
+
+* {
+    font:             "JetBrainsMono Nerd Font 13";
+    background-color: transparent;
+    text-color:       @fg;
+    border:           0;
+}
+
+window {
+    width:            620;
+    border-radius:    16;
+    background-color: @bg;
+    border:           1;
+    border-color:     #7aa2f72e;
+}
+
+mainbox {
+    padding:  14;
+    spacing:  10;
+    children: [ inputbar, listview ];
+}
+
+/* ── Input ───────────────────────────────────────────────────────── */
+inputbar {
+    background-color: @bg-alt;
+    border-radius:    12;
+    border:           1;
+    border-color:     #7aa2f740;
+    padding:          10 14;
+    spacing:          10;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    text-color: @blue;
+    font:       "JetBrainsMono Nerd Font Bold 15";
+}
+
+entry {
+    placeholder:       "Buscar...";
+    placeholder-color: @fg-muted;
+    text-color:        @fg;
+    vertical-align:    0.5;
+}
+
+/* ── List ────────────────────────────────────────────────────────── */
+listview {
+    lines:        8;
+    columns:      1;
+    spacing:      3;
+    scrollbar:    false;
+    fixed-height: true;
+}
+
+element {
+    padding:      7 12;
+    border-radius: 10;
+    spacing:      12;
+    children:     [ element-icon, element-text ];
+}
+
+element-icon {
+    size:           22;
+    vertical-align: 0.5;
+}
+
+element-text {
+    vertical-align: 0.5;
+}
+
+/* normal states */
+element normal.normal {
+    background-color: transparent;
+    text-color:       @fg-dim;
+}
+element normal.urgent {
+    background-color: transparent;
+    text-color:       @red;
+}
+element normal.active {
+    background-color: transparent;
+    text-color:       @cyan;
+}
+
+/* selected states */
+element selected.normal {
+    background-color: #bb9af71e;
+    text-color:       @fg;
+    border:           1;
+    border-color:     #bb9af759;
+}
+element selected.urgent {
+    background-color: #f7768e1e;
+    text-color:       @red;
+    border:           1;
+    border-color:     #f7768e59;
+}
+element selected.active {
+    background-color: #7dcfff1e;
+    text-color:       @cyan;
+    border:           1;
+    border-color:     #7dcfff59;
+}

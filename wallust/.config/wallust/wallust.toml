@@ -1,0 +1,13 @@
+# wallust config: generates a palette from the wallpaper and fills templates.
+backend = "resized"
+color_space = "lab"
+palette = "dark16"
+check_contrast = true
+
+# 'template' is relative to ~/.config/wallust/templates/
+[templates]
+alacritty = { template = 'alacritty.toml', target = '~/.config/alacritty/colors-wallust.toml' }
+polybar   = { template = 'polybar.ini',    target = '~/.config/polybar/colors.ini' }
+dunst     = { template = 'dunstrc',        target = '~/.config/dunst/dunstrc' }
+rofi      = { template = 'colors.rasi',    target = '~/.config/rofi/colors.rasi' }
+i3        = { template = 'i3colors.conf',  target = '~/.config/i3/colors-wallust.conf' }
