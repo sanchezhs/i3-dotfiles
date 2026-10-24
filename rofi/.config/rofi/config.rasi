@@ -94,6 +94,20 @@ element normal.active {
     text-color:       @cyan;
 }
 
+/* alternate rows: match the normal rows (rofi's default is too light) */
+element alternate.normal {
+    background-color: transparent;
+    text-color:       @fg-dim;
+}
+element alternate.urgent {
+    background-color: transparent;
+    text-color:       @red;
+}
+element alternate.active {
+    background-color: transparent;
+    text-color:       @cyan;
+}
+
 /* selected states */
 element selected.normal {
     background-color: #bb9af71e;
