@@ -1,44 +1,31 @@
-#!/bin/bash
-# A simple power menu using rofi
-# Options: Shutdown, Reboot, Lock, Logout, Suspend, and Hibernate
+#!/usr/bin/env bash
+# Power menu with rofi, themed by wallust (uses ~/.config/rofi/config.rasi,
+# same as the Wi-Fi and app menus). Icons are Nerd Font glyphs; the chosen
+# action is matched on the full label.
 
-# Define menu options
-options="Shutdown\nReboot\nLock\nLogout\nSuspend\nHibernate"
-#options="  Shutdown\n  Reboot\n  Lock\n  Logout\n  Suspend\n   Hibernate"
+shutdown_e="󰐥  Shutdown"
+reboot_e="󰜉  Reboot"
+lock_e="󰌾  Lock"
+logout_e="󰍃  Logout"
+suspend_e="󰤄  Suspend"
+hibernate_e="󰜗  Hibernate"
 
-# Launch rofi in dmenu mode with a prompt.
-# You can specify a custom theme by replacing the -theme argument with your theme file.
-choice=$(echo -e "$options" | rofi -dmenu -p "Power" -theme ~/.config/i3/powermenu.rasi)
+options="$shutdown_e
+$reboot_e
+$lock_e
+$logout_e
+$suspend_e
+$hibernate_e"
 
-# Execute the corresponding command based on the chosen option.
+choice=$(printf '%s\n' "$options" | rofi -dmenu -i -p "Power" \
+    -theme-str 'window { width: 320px; } listview { lines: 6; } element-text { vertical-align: 0.5; }')
+
 case "$choice" in
-Shutdown)
-  # Shutdown the system
-  shutdown now
-  ;;
-Reboot)
-  # Reboot the system
-  systemctl reboot
-  ;;
-Lock)
-  # Lock the screen. Adjust this command to your preferred locker (e.g. i3lock, betterlockscreen, etc.)
-  i3lock -c 000000
-  ;;
-Logout)
-  # Logout of the current session.
-  # This example uses i3; change it according to your desktop environment.
-  i3-msg exit
-  ;;
-Suspend)
-  # Suspend the system
-  systemctl suspend
-  ;;
-Hibernate)
-  # Hibernate the system
-  systemctl hibernate
-  ;;
-*)
-  # If no valid option is chosen, exit silently.
-  exit 0
-  ;;
+    "$shutdown_e")  systemctl poweroff ;;
+    "$reboot_e")    systemctl reboot ;;
+    "$lock_e")      i3lock -c 000000 ;;
+    "$logout_e")    i3-msg exit ;;
+    "$suspend_e")   systemctl suspend ;;
+    "$hibernate_e") systemctl hibernate ;;
+    *)              exit 0 ;;   # dismissed / no valid choice
 esac
