@@ -52,6 +52,8 @@ exec_always --no-startup-id $HOME/.config/i3/display_init.sh
 exec_always --no-startup-id xwallpaper --zoom $HOME/.config/wallpaper.current
 # Wallpaper picker with rofi (changes background + dynamic theme)
 bindsym $mod+Shift+w exec --no-startup-id $HOME/.config/i3/wallpaper-select.sh
+# Wi-Fi menu with rofi (list / connect / disconnect networks)
+bindsym $mod+Shift+n exec --no-startup-id $HOME/.config/i3/wifi-menu.sh
 
 # Notification daemon (shows alerts on screen)
 exec --no-startup-id dunst
