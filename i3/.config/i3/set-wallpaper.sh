@@ -7,7 +7,8 @@ img="$1"
 # Remember it as the current one (used by i3 startup and the autorandr postswitch)
 ln -sf "$img" "$HOME/.config/wallpaper.current"
 
-# 1) Palette from the image + fill templates (alacritty/polybar/dunst/rofi/i3)
+# 1) Palette from the image + fill templates
+#    (alacritty / dunst / rofi / i3 borders / i3status-rust bar)
 wallust run "$img" >/dev/null 2>&1
 
 # 2) Background on all screens
@@ -17,5 +18,5 @@ xwallpaper --zoom "$img"
 #    alacritty -> live_config_reload (automatic)
 #    rofi      -> re-reads its theme on each open (automatic)
 dunstctl reload 2>/dev/null                 # notifications
-i3-msg reload >/dev/null 2>&1               # i3 window borders (does not relaunch apps)
-"$HOME/.config/i3/polybar_launch.sh"        # bar
+i3-msg reload >/dev/null 2>&1               # i3 borders + i3bar colors
+pkill -SIGUSR2 i3status-rs 2>/dev/null      # make the bar re-read its new colors

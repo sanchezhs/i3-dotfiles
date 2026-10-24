@@ -6,8 +6,16 @@ check_contrast = true
 
 # 'template' is relative to ~/.config/wallust/templates/
 [templates]
-alacritty = { template = 'alacritty.toml', target = '~/.config/alacritty/colors-wallust.toml' }
-polybar   = { template = 'polybar.ini',    target = '~/.config/polybar/colors.ini' }
-dunst     = { template = 'dunstrc',        target = '~/.config/dunst/dunstrc' }
-rofi      = { template = 'colors.rasi',    target = '~/.config/rofi/colors.rasi' }
-i3        = { template = 'i3colors.conf',  target = '~/.config/i3/colors-wallust.conf' }
+alacritty = { template = 'alacritty.toml',      target = '~/.config/alacritty/colors-wallust.toml' }
+dunst     = { template = 'dunstrc',             target = '~/.config/dunst/dunstrc' }
+rofi      = { template = 'colors.rasi',         target = '~/.config/rofi/colors.rasi' }
+i3        = { template = 'i3colors.conf',       target = '~/.config/i3/colors-wallust.conf' }
+# Status bar: i3bar + i3status-rust.
+# i3bar colors: the whole bar {} block is generated (i3 does not expand
+# $variables inside a bar block, so literal colors are written out).
+i3bar     = { template = 'i3bar.conf',          target = '~/.config/i3/bar.conf' }
+# i3status-rust: wallust generates the whole config.toml (blocks + theme).
+i3status  = { template = 'i3status-rust.toml',  target = '~/.config/i3status-rust/config.toml' }
+# polybar is no longer used (replaced by i3bar + i3status-rust). Kept here,
+# commented out, in case you want to switch back.
+# polybar  = { template = 'polybar.ini',         target = '~/.config/polybar/colors.ini' }

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Runs after a profile is applied (on HDMI connect/disconnect).
-# 1) Repaint the wallpaper to cover whatever screens are present now.
+# Repaint the wallpaper to cover whatever screens are present now.
+# The status bar (i3bar) follows the monitors on its own, so there is
+# nothing bar-related to do here.
 xwallpaper --zoom "$HOME/.config/wallpaper.current"
-# 2) Relaunch polybar on the current monitors.
-"$HOME/.config/i3/polybar_launch.sh"

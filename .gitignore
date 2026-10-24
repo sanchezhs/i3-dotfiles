@@ -3,6 +3,7 @@ polybar/.config/polybar/colors.ini
 alacritty/.config/alacritty/colors-wallust.toml
 rofi/.config/rofi/colors.rasi
 i3/.config/i3/colors-wallust.conf
+i3/.config/i3/bar.conf
 
 # Backups and logs
 *.bak
