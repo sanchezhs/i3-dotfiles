@@ -11,3 +11,4 @@ polybar   = { template = 'polybar.ini',    target = '~/.config/polybar/colors.in
 dunst     = { template = 'dunstrc',        target = '~/.config/dunst/dunstrc' }
 rofi      = { template = 'colors.rasi',    target = '~/.config/rofi/colors.rasi' }
 i3        = { template = 'i3colors.conf',  target = '~/.config/i3/colors-wallust.conf' }
+i3lock    = { template = 'i3lock.sh',      target = '~/.config/i3/lock-colors.sh' }

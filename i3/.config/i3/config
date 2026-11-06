@@ -32,14 +32,20 @@ default_border pixel 1
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id emacs --daemon
-exec --no-startup-id systemctl --user enable --now ulauncher
+# exec --no-startup-id systemctl --user enable --now ulauncher  # ulauncher not installed (wofi is the launcher)
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# Idle: after 5 min the screen dims (dim-screen.sh) for 10 s, then locks.
+# The display turns off after 10 min. Lock colors come from wallust (lock.sh).
+exec --no-startup-id xset s 300 10
+exec --no-startup-id xset dpms 600 600 600
+exec --no-startup-id xss-lock --transfer-sleep-lock -n $HOME/.config/i3/dim-screen.sh -- $HOME/.config/i3/lock.sh
+# Lock manually
+bindsym $mod+Escape exec --no-startup-id loginctl lock-session
 exec --no-startup-id picom --config $HOME/.config/picom/picom.conf
 # Wallpaper: ONLY xwallpaper is used (nitrogen disabled to avoid conflicts).
 # The background is also repainted in ~/.config/autorandr/postswitch on display changes.
